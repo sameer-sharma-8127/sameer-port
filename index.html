@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sameer Sharma - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        main {
+            margin-top: 80px;
+        }
+
+        .hero {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+            margin: 2rem auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 2rem auto;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #333;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 1rem auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .achievement-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .achievement-img {
+            height: 150px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .achievement-content {
+            padding: 1.5rem;
+        }
+
+        .achievement-content h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .experience-item {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -1.7rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+
+        .experience-item h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .date {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .company {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item ul {
+            margin-left: 1rem;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(102, 126, 234, 0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 25px;
+            color: #333;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: scale(1.05);
+            background: rgba(102, 126, 234, 0.2);
+        }
+
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .instant-contact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .instant-contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .instant-contact-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(45deg, #25D366, #20BA5A);
+        }
+
+        .telegram-btn {
+            background: linear-gradient(45deg, #0088cc, #005fa3);
+        }
+
+        .linkedin-btn {
+            background: linear-gradient(45deg, #0077b5, #005582);
+        }
+
+        .email-btn {
+            background: linear-gradient(45deg, #ea4335, #c5221f);
+        }
+
+        .form-status {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .form-status.success {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .form-status.error {
+            background: rgba(244, 67, 54, 0.1);
+            color: #f44336;
+            border: 1px solid rgba(244, 67, 54, 0.3);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: scale(1.1);
+        }
+
+        .education-card {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .education-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .certifications-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .cert-item {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .contact-details {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section {
+                margin: 1rem;
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Sameer Sharma</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero container">
+            <h1>Hi, I'm Sameer Sharma</h1>
+            <p>Customer Service Professional & Team Leader | Remote-Ready</p>
+            <a href="#contact" class="cta-button">Let's Connect</a>
+        </section>
+
+        <section id="about" class="section container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="profile-img">🎧</div>
+                <div>
+                    <p>I'm a dedicated Customer Service Professional with over 1 year of experience in international voice processes (inbound & outbound). I was promoted to Team Leader within just 8 months at Mediagoats, where I successfully managed a team of 15+ agents while maintaining exceptional customer satisfaction ratings.</p>
+                    <br>
+                    <p>Fluent in English and Hindi, I specialize in resolving customer queries, handling escalations, and delivering outstanding customer experiences. My passion lies in building strong client relationships and leading teams to achieve their best performance in remote-first environments.</p>
+                    <br>
+                    <p>🌟 Actively upskilling with AI tools and seeking remote opportunities in customer support or client success roles</p>
+                    <p>🌍 Open to international roles with USD/EUR compensation</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section container">
+            <h2>Core Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Customer Support</h3>
+                    <p>International Voice Processes, Inbound & Outbound Calls, Query Resolution, Escalation Handling</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Communication</h3>
+                    <p>Bilingual (English & Hindi), Persuasion, Conflict Resolution, Client Relationship Management</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Leadership & Management</h3>
+                    <p>Team Leadership, Performance Coaching, KPI Tracking, Training & Development</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Remote Work Tools</h3>
+                    <p>CRM Systems, Zoom, Slack, Time Management, Remote Collaboration, AI Tools</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements" class="section container">
+            <h2>Key Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-img">🚀</div>
+                    <div class="achievement-content">
+                        <h3>Fast-Track Promotion</h3>
+                        <p>Promoted to Team Leader within 8 months based on exceptional performance and leadership potential in customer service excellence.</p>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-img">👥</div>
+                    <div class="achievement-content">
+                        <h3>Team Management</h3>
+                        <p>Successfully managed and coached a team of 15+ customer service agents, improving overall team performance and customer satisfaction.</p>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-img">🎯</div>
+                    <div class="achievement-content">
+                        <h3>High-Volume Operations</h3>
+                        <p>Consistently handled high-volume international calls while maintaining quality standards and resolving complex customer issues.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section container">
+            <h2>Professional Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <h3>International Voice Executive / Team Leader</h3>
+                    <div class="company">Mediagoats Pvt. Ltd.</div>
+                    <div class="date">August 2024 – September 2025</div>
+                    <ul>
+                        <li>Handled high-volume international inbound and outbound calls with empathy and efficiency</li>
+                        <li>Resolved customer queries and provided product/service information with clarity</li>
+                        <li>Promoted to Team Leader after 8 months based on exceptional performance</li>
+                        <li>Supervised a team of 15+ agents, led daily standups, tracked KPIs, and coached underperformers</li>
+                        <li>Handled escalations and maintained high customer satisfaction ratings</li>
+                        <li>Worked in both remote and on-site environments in India</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section container">
+            <h2>Education & Certifications</h2>
+            <div class="education-card">
+                <h3>Bachelor of Computer Applications (BCA)</h3>
+                <p><strong>Sunderdeep Global University</strong></p>
+                <p>October 2021 – July 2024</p>
+            </div>
+            
+            <h3 style="text-align: center; margin: 2rem 0 1rem 0; color: #667eea;">Certifications & Training</h3>
+            <div class="certifications-list">
+                <div class="cert-item">
+                    <h4>AI Workshops</h4>
+                    <p>Be10x & Outskill</p>
+                </div>
+                <div class="cert-item">
+                    <h4>Team Leadership Training</h4>
+                    <p>Mediagoats Pvt. Ltd.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section container">
+            <h2>Let's Work Together</h2>
+            <div class="contact-info">
+                <p>Ready for remote opportunities worldwide! Open to international roles with USD/EUR compensation.</p>
+                <p>Choose your preferred way to connect:</p>
+            </div>
+            
+            <div class="instant-contact">
+                <a href="https://wa.me/918127758686?text=Hi%20Sameer!%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20remote%20opportunity." class="instant-contact-btn whatsapp-btn">
+                    <span>💬</span>
+                    <span>WhatsApp Me</span>
+                </a>
+                <a href="mailto:sameersharma8127@gmail.com?subject=Job%20Opportunity&body=Hi%20Sameer,%0D%0A%0D%0AI%20found%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20remote%20opportunity.%0D%0A%0D%0ABest%20regards" class="instant-contact-btn email-btn">
+                    <span>📧</span>
+                    <span>Send Email</span>
+                </a>
+                <a href="tel:+918127758686" class="instant-contact-btn linkedin-btn">
+                    <span>📞</span>
+                    <span>Call Now</span>
+                </a>
+                <a href="#contact-form" class="instant-contact-btn telegram-btn">
+                    <span>📝</span>
+                    <span>Contact Form</span>
+                </a>
+            </div>
+            
+            <div class="contact-details">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>sameersharma8127@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📞</span>
+                    <span>+91 81277 58686</span>
+                </div>
+                <div class="contact-item">
+                    <span>🌍</span>
+                    <span>India (Remote Ready)</span>
+                </div>
+            </div>
+            
+            <h3 id="contact-form" style="text-align: center; margin: 2rem 0 1rem 0; color: #667eea;">Or Send a Message</h3>
+            
+            <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="_replyto" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Company</label>
+                    <input type="text" id="company" name="company" placeholder="Your company name">
+                </div>
+                <div class="form-group">
+                    <label for="position">Position/Role</label>
+                    <input type="text" id="position" name="position" placeholder="Role you're hiring for">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Tell me about the opportunity, salary range, working hours, etc."></textarea>
+                </div>
+                <input type="hidden" name="_subject" value="New Portfolio Contact from Website">
+                <input type="hidden" name="_next" value="thank-you.html">
+                <button type="submit" class="submit-btn">Send Message 📧</button>
+                
+                <div class="form-status" id="form-status"></div>
+            </form>
+        </section>
+    </main>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/918127758686?text=Hi%20Sameer!%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20remote%20opportunity." class="whatsapp-button" title="Chat on WhatsApp">
+        💬
+    </a>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="mailto:sameersharma8127@gmail.com" class="social-link" title="Email">📧</a>
+                <a href="https://wa.me/918127758686" class="social-link" title="WhatsApp">💬</a>
+                <a href="tel:+918127758686" class="social-link" title="Phone">📞</a>
+                <a href="#" class="social-link" title="LinkedIn">💼</a>
+            </div>
+            <p>&copy; 2025 Sameer Sharma. All rights reserved.</p>
+            <p>Customer Service Professional | Ready for Remote Opportunities Worldwide 🌍</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler with Formspree integration
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            const statusDiv = document.getElementById('form-status');
+            const submitBtn = form.querySelector('.submit-btn');
+            
+            // Show loading state
+            submitBtn.textContent = 'Sending... ⏳';
+            submitBtn.disabled = true;
+            statusDiv.style.display = 'none';
+            
+            // Send to Formspree (you'll need to replace YOUR_FORM_ID)
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    statusDiv.className = 'form-status success';
+                    statusDiv.innerHTML = `
+                        <strong>✅ Message Sent Successfully!</strong><br>
+                        Thank you for reaching out! I'll get back to you within 24 hours.<br>
+                        <small>For urgent matters, please WhatsApp me at +91 81277 58686</small>
+                    `;
+                    statusDiv.style.display = 'block';
+                    form.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            }).catch(error => {
+                statusDiv.className = 'form-status error';
+                statusDiv.innerHTML = `
+                    <strong>❌ Message Failed to Send</strong><br>
+                    Please try again or contact me directly:<br>
+                    📧 sameersharma8127@gmail.com<br>
+                    💬 <a href="https://wa.me/918127758686" style="color: #25D366;">WhatsApp: +91 81277 58686</a>
+                `;
+                statusDiv.style.display = 'block';
+            }).finally(() => {
+                submitBtn.textContent = 'Send Message 📧';
+                submitBtn.disabled = false;
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(section);
+        });
+
+        // Add contact item click functionality
+        document.querySelectorAll('.contact-item').forEach(item => {
+            if (!item.href) {
+                item.style.cursor = 'default';
+            }
+        });
+    </script>
+</body>
+</html>
